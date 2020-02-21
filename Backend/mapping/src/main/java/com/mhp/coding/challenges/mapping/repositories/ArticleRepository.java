@@ -3,10 +3,19 @@ package com.mhp.coding.challenges.mapping.repositories;
 import com.mhp.coding.challenges.mapping.models.db.Article;
 import com.mhp.coding.challenges.mapping.models.db.Image;
 import com.mhp.coding.challenges.mapping.models.db.ImageSize;
-import com.mhp.coding.challenges.mapping.models.db.blocks.*;
+import com.mhp.coding.challenges.mapping.models.db.blocks.ArticleBlock;
+import com.mhp.coding.challenges.mapping.models.db.blocks.GalleryBlock;
+import com.mhp.coding.challenges.mapping.models.db.blocks.ImageBlock;
+import com.mhp.coding.challenges.mapping.models.db.blocks.TextBlock;
+import com.mhp.coding.challenges.mapping.models.db.blocks.VideoBlock;
+import com.mhp.coding.challenges.mapping.models.db.blocks.VideoBlockType;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Component
 public class ArticleRepository {
@@ -91,6 +100,6 @@ public class ArticleRepository {
         result.setLastModifiedBy("Max Mustermann");
         result.setImageSize(ImageSize.LARGE);
         result.setUrl("https://someurl.com/image/" + imageId);
-        return null;
+        return result;
     }
 }
