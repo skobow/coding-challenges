@@ -13,7 +13,9 @@ class ArticleMapper(private val blockMapper: ArticleBlockMapper) {
                 article.title,
                 article.description,
                 article.author,
-                blockMapper.mapAll(article.blocks))
+                blockMapper.mapAll(article.blocks).sortedBy {
+                    it.sortIndex
+                })
 
     fun map(articleDto: ArticleDto): Article {
         // Nicht Teil dieser Challenge.
