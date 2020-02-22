@@ -60,7 +60,7 @@ public class ArticleRepository {
 
         final ImageBlock imageBlock = new ImageBlock();
         imageBlock.setImage(createImage(1L));
-        textBlock.setSortIndex(1);
+        imageBlock.setSortIndex(1);
         result.add(imageBlock);
 
         final TextBlock secondTextBlock = new TextBlock();
