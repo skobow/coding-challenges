@@ -1,5 +1,7 @@
 # Backend Coding Challenge: Mapping Challenge
 
+![MHP Coding Challenges](https://github.com/skobow/coding-challenges/workflows/MHP%20Coding%20Challenges/badge.svg)
+
 ### acceptance criteria:
  - `Article` is correctly mapped to `ArticleDTO` (see `ArticleController#list` and `ArticleController#details`) and is emitted as a JSON from the Controllers
  - the collection of `ArticleBlockDto` in `ArticleDTO` is sorted after `sortIndex` in `ArticleBlockDTO`

@@ -1,5 +1,7 @@
 # Backend Coding Challenge: Module Dependency Challenge
 
+![MHP Coding Challenges](https://github.com/skobow/coding-challenges/workflows/MHP%20Coding%20Challenges/badge.svg)
+
 ### ProjectStructure
 This Spring-Boot-Project consists of three Submodules (`inquiry`, `notification` and `application`).
 The `notification`-Module depends on the `inquiry`-Module. The `application` depends on both and serves as Spring boot main module.
