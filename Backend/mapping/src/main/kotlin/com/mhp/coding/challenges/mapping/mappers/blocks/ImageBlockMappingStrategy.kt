@@ -10,7 +10,5 @@ import org.springframework.stereotype.Component
 class ImageBlockMappingStrategy : AbstractArticleBlockMappingStrategy<ImageBlock>() {
     override fun canMap(block: ArticleBlock) = block is ImageBlock
 
-    override fun doMap(block: ImageBlock) = ImageBlockDto(
-                block.sortIndex,
-                block.image?.toImageDto())
+    override fun doMap(block: ImageBlock) = ImageBlockDto(block.sortIndex, block.image?.toImageDto())
 }

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping(path = ["/article"], produces = [MediaType.APPLICATION_JSON_VALUE])
 class ArticleController(private val articleService: ArticleService) {
 
-    @GetMapping()
+    @GetMapping
     fun list(): List<ArticleDto> {
         return articleService.list()
     }

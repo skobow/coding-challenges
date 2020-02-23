@@ -3,7 +3,6 @@ const val springBootVersion = "2.2.4.RELEASE"
 
 object BuildPlugins {
     object Versions {
-        const val versionsPlugin = "0.27.0"
         const val springDependencyManagementPlugin = "1.0.9.RELEASE"
     }
 
@@ -20,4 +19,5 @@ object Libraries {
 
 object TestLibraries {
     const val springBootStarterTest = "org.springframework.boot:spring-boot-starter-test"
+    const val assertJ = "org.assertj:assertj-core:3.15.0"
 }

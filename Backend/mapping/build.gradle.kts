@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
 	id(BuildPlugins.springBootPlugin) version springBootVersion
 	id(BuildPlugins.springDependencyManagementPlugin) version BuildPlugins.Versions.springDependencyManagementPlugin
-	kotlin("jvm") version kotlinVersion
+	kotlin(BuildPlugins.kotlinJvmPlugin) version kotlinVersion
 	kotlin(BuildPlugins.kotlinSpringPlugin) version kotlinVersion
 }
 
@@ -28,4 +28,5 @@ dependencies {
 	implementation(kotlin("stdlib-jdk8"))
 
 	testImplementation(TestLibraries.springBootStarterTest)
+	testImplementation(TestLibraries.assertJ)
 }

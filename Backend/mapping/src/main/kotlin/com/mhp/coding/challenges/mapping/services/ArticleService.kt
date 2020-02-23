@@ -3,22 +3,28 @@ package com.mhp.coding.challenges.mapping.services
 import com.mhp.coding.challenges.mapping.mappers.ArticleMapper
 import com.mhp.coding.challenges.mapping.models.dto.ArticleDto
 import com.mhp.coding.challenges.mapping.repositories.ArticleRepository
+import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
-import java.util.stream.Collectors
 
 
 @Service
 class ArticleService(private val repository: ArticleRepository, private val mapper: ArticleMapper) {
 
-    fun list(): List<ArticleDto> =
-            repository.all().stream()
-                    .map(mapper::map)
-                    .collect(Collectors.toList())
+    companion object {
+        @Suppress("JAVA_CLASS_ON_COMPANION")
+        @JvmStatic
+        private val log = LoggerFactory.getLogger(javaClass.enclosingClass)
+    }
+
+    fun list(): List<ArticleDto> = repository.all().map(mapper::map)
 
     fun articleForId(id: Long): ArticleDto? =
-            repository.findBy(id)?.let {
-                mapper.map(it)
-            }
+            repository.findBy(id)
+                    .map(mapper::map)
+                    .orElseGet {
+                        log.info("Unable to find article with id [{}]", id)
+                        null
+                    }
 
     fun create(articleDto: ArticleDto): ArticleDto {
         val create = mapper.map(articleDto)
