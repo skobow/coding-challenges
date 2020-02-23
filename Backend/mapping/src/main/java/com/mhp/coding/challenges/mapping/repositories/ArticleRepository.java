@@ -3,26 +3,42 @@ package com.mhp.coding.challenges.mapping.repositories;
 import com.mhp.coding.challenges.mapping.models.db.Article;
 import com.mhp.coding.challenges.mapping.models.db.Image;
 import com.mhp.coding.challenges.mapping.models.db.ImageSize;
-import com.mhp.coding.challenges.mapping.models.db.blocks.*;
+import com.mhp.coding.challenges.mapping.models.db.blocks.ArticleBlock;
+import com.mhp.coding.challenges.mapping.models.db.blocks.GalleryBlock;
+import com.mhp.coding.challenges.mapping.models.db.blocks.ImageBlock;
+import com.mhp.coding.challenges.mapping.models.db.blocks.TextBlock;
+import com.mhp.coding.challenges.mapping.models.db.blocks.VideoBlock;
+import com.mhp.coding.challenges.mapping.models.db.blocks.VideoBlockType;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 @Component
 public class ArticleRepository {
 
-    public List<Article> all(){
-        final List<Article> result = new ArrayList<>();
-        result.add(createDummyArticle(1001L));
-        result.add(createDummyArticle(2002L));
-        result.add(createDummyArticle(3003L));
-        result.add(createDummyArticle(4004L));
-        result.add(createDummyArticle(5005L));
-        return result;
+    private final List<Article> articles = new ArrayList<>();
+
+    public ArticleRepository() {
+        articles.add(createDummyArticle(1001L));
+        articles.add(createDummyArticle(2002L));
+        articles.add(createDummyArticle(3003L));
+        articles.add(createDummyArticle(4004L));
+        articles.add(createDummyArticle(5005L));
     }
 
-    public Article findBy(Long id){
-        return createDummyArticle(id);
+    public List<Article> all(){
+        return articles;
+    }
+
+    public Optional<Article> findBy(Long id){
+        return articles.stream()
+                .filter(article -> id.equals(article.getId()))
+                .findFirst();
     }
 
     public void create(Article article){
@@ -51,7 +67,7 @@ public class ArticleRepository {
 
         final ImageBlock imageBlock = new ImageBlock();
         imageBlock.setImage(createImage(1L));
-        textBlock.setSortIndex(1);
+        imageBlock.setSortIndex(1);
         result.add(imageBlock);
 
         final TextBlock secondTextBlock = new TextBlock();
@@ -60,7 +76,7 @@ public class ArticleRepository {
         result.add(secondTextBlock);
 
         final GalleryBlock galleryBlock = new GalleryBlock();
-        secondTextBlock.setSortIndex(3);
+        galleryBlock.setSortIndex(3);
 
         final List<Image> galleryImages = new ArrayList<>();
         galleryImages.add(createImage(2L));
@@ -91,6 +107,6 @@ public class ArticleRepository {
         result.setLastModifiedBy("Max Mustermann");
         result.setImageSize(ImageSize.LARGE);
         result.setUrl("https://someurl.com/image/" + imageId);
-        return null;
+        return result;
     }
 }
